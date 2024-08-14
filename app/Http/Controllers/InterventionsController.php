@@ -9,7 +9,10 @@ use App\Models\Facilities;
 use App\Models\FacilityTypes;
 use App\Models\FundingAgencies;
 use App\Models\FundSources;
+use App\Models\Livestocks;
+use App\Models\LivestockValues;
 use App\Models\Machineries;
+use App\Models\SubCommodities;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,6 +28,8 @@ class InterventionsController extends Controller
 
         $facilityValues = FacilityTypes::pluck('facility', 'id');
 
+        $livestockValues = LivestockValues::pluck('livestock', 'id');
+
         $agencyValues = FundingAgencies::pluck('agency', 'id');
 
         $sourceValues = FundSources::pluck('source', 'id');
@@ -36,6 +41,7 @@ class InterventionsController extends Controller
             'agencyValues' => $agencyValues,
             'sourceValues' => $sourceValues,
             'facilityValues' => $facilityValues,
+            'livestockValues' => $livestockValues,
         ]);
     }
 
@@ -53,6 +59,10 @@ class InterventionsController extends Controller
             'facilitiesCoa' => 'uploads/facilitiesCertificateOfAcceptance',
             'facilitiesGeoTaggedPic' => 'uploads/facilitiesGeoTaggedPicture',
             'facilitiesCms' => 'uploads/facilitiesCms',
+            'livestockMoa' => 'uploads/livestockMoa',
+            'livestockCoa' => 'uploads/livestockCertificateOfAcceptance',
+            'livestockGeoTaggedPic' => 'uploads/livestockGeoTaggedPicture',
+            'livestockCms' => 'uploads/livestockCms',
         ];
 
         $paths = [];
@@ -115,6 +125,29 @@ class InterventionsController extends Controller
                 'userId' => $user->id,
             ];
             Facilities::create($data);
+        }
+
+        foreach ($request->input('livestockAssociationName') as $key => $associationName) {
+            $moa = isset($paths['livestockMoa'][$key]) ? $paths['livestockMoa'][$key] : null;
+            $certificateOfAcceptance = isset($paths['livestockCoa'][$key]) ? $paths['livestockCoa'][$key] : null;
+            $geoTaggedPicture = isset($paths['livestockGeoTaggedPic'][$key]) ? $paths['livestockGeoTaggedPic'][$key] : null;
+            $cms = isset($paths['livestockCms'][$key]) ? $paths['livestockCms'][$key] : null;
+
+            $data = [
+                'association' => $associationName,
+                'intervention' => $request->input('livestockInterventions')[$key],
+                'specification' => $request->input('livestockSpecification')[$key],
+                'amount' => $request->input('livestockMachineAmounts')[$key],
+                'status' => $request->input('livestockServiceTypes')[$key],
+                'fundingAgency' => $request->input('livestockFundingAgency')[$key],
+                'fundSource' => $request->input('livestockFundSource')[$key],
+                'moa' => $moa,
+                'certificateOfAcceptance' => $certificateOfAcceptance,
+                'geoTaggedPicture' => $geoTaggedPicture,
+                'cms' => $cms,
+                'userId' => $user->id,
+            ];
+            Livestocks::create($data);
         }
 
         return redirect()->back()->with('success', 'Data saved successfully!');

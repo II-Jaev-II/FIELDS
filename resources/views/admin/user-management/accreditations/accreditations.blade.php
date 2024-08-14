@@ -31,6 +31,22 @@
                 <p>This association has no RCEF Accreditations.</a></p>
             </div>
         @endif
+        <h2 class="bg-success text-white p-2 text-center mt-2">MLGU Accreditations</h2>
+        @if ($mlguAccreditation)
+            @include('admin.user-management.accreditations.mlgu-accreditations')
+        @else
+            <div class="d-flex justify-content-center align-items-center">
+                <p>This association has no MLGU Accreditations.</a></p>
+            </div>
+        @endif
+        <h2 class="bg-success text-white p-2 text-center mt-2">PLGU Accreditations</h2>
+        @if ($plguAccreditation)
+            @include('admin.user-management.accreditations.plgu-accreditations')
+        @else
+            <div class="d-flex justify-content-center align-items-center">
+                <p>This association has no PLGU Accreditations.</a></p>
+            </div>
+        @endif
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">

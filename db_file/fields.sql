@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2024 at 04:53 AM
+-- Generation Time: Aug 14, 2024 at 04:25 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -3870,6 +3870,51 @@ INSERT INTO `fund_sources` (`id`, `source`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `livestocks`
+--
+
+CREATE TABLE `livestocks` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `association` varchar(255) NOT NULL,
+  `intervention` varchar(255) NOT NULL,
+  `specification` varchar(255) NOT NULL,
+  `amount` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `fundingAgency` varchar(255) NOT NULL,
+  `fundSource` varchar(255) NOT NULL,
+  `moa` varchar(255) NOT NULL,
+  `certificateOfAcceptance` varchar(255) NOT NULL,
+  `geoTaggedPicture` varchar(255) NOT NULL,
+  `cms` varchar(255) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `livestock_types`
+--
+
+CREATE TABLE `livestock_types` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `livestock` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `livestock_types`
+--
+
+INSERT INTO `livestock_types` (`id`, `livestock`) VALUES
+(1, 'Small Ruminant'),
+(2, 'Large Ruminant'),
+(3, 'Poultry'),
+(4, 'Swine');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `machineries`
 --
 
@@ -4016,7 +4061,35 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (61, '2024_05_29_044636_create_training_types_table', 44),
 (62, '2024_06_10_130152_create_request_histories_table', 45),
 (63, '2024_06_15_064104_create_water_source_types_table', 46),
-(64, '2024_08_08_012940_create_rsbsa_details_table', 47);
+(64, '2024_08_08_012940_create_rsbsa_details_table', 47),
+(65, '2024_08_12_174722_create_mlgu_accreditations_table', 48),
+(66, '2024_08_13_021422_create_plgu_accreditations_table', 48),
+(67, '2024_08_13_052739_create_livestock_types_table', 48),
+(68, '2024_08_13_053830_create_livestocks_table', 48),
+(69, '2024_08_14_004031_add_authorized_user_to_users_table', 49);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mlgu_accreditations`
+--
+
+CREATE TABLE `mlgu_accreditations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `dulyAccomplishedForm` varchar(255) NOT NULL,
+  `boardResolution` varchar(255) NOT NULL,
+  `certificateOfRegistration` varchar(255) NOT NULL,
+  `currentList` varchar(255) NOT NULL,
+  `originalSwornStatement` varchar(255) NOT NULL,
+  `annualAccomplishmentReport` varchar(255) NOT NULL,
+  `financialStatement` varchar(255) NOT NULL,
+  `organizationPurpose` varchar(255) NOT NULL,
+  `copyofMinutes` varchar(255) NOT NULL,
+  `byLaws` varchar(255) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -4229,6 +4302,27 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `plgu_accreditations`
+--
+
+CREATE TABLE `plgu_accreditations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `letterOfApplication` varchar(255) NOT NULL,
+  `dulyAccomplishedForm` varchar(255) NOT NULL,
+  `dulyApprovedBoard` varchar(255) NOT NULL,
+  `certificateOfRegistration` varchar(255) NOT NULL,
+  `currentList` varchar(255) NOT NULL,
+  `annualMeetings` varchar(255) NOT NULL,
+  `annualAccomplishment` varchar(255) NOT NULL,
+  `financialStatement` varchar(255) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `president_profiles`
 --
 
@@ -4416,6 +4510,14 @@ CREATE TABLE `training_needs` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `training_needs`
+--
+
+INSERT INTO `training_needs` (`id`, `trainingNeeds`, `userId`, `created_at`, `updated_at`) VALUES
+(1, '1,3', 1, '2024-08-07 20:59:36', '2024-08-07 20:59:36'),
+(2, '4,11', 8, '2024-08-07 21:18:05', '2024-08-07 21:18:05');
+
 -- --------------------------------------------------------
 
 --
@@ -4463,6 +4565,7 @@ CREATE TABLE `users` (
   `barangay` varchar(255) NOT NULL,
   `birthDate` date NOT NULL,
   `phoneNumber` varchar(255) NOT NULL,
+  `authorizedUser` varchar(255) DEFAULT 'No',
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
@@ -4474,15 +4577,15 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `userType`, `province`, `municipality`, `district`, `barangay`, `birthDate`, `phoneNumber`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Christian Jave Tejano', 'christiantejano18@gmail.com', 'FCA', '3', '60', NULL, '1455', '2001-08-18', '09393922025', NULL, '$2y$12$UHJPmqSmRQzMfoQ/YmuNVuR5zwHrRAKnfKaeIIqqovZUBAr.N8o5y', NULL, '2024-06-06 07:51:24', '2024-06-06 07:51:24'),
-(2, 'APCO LA UNION', 'launionapco@gmail.com', 'APCOLAUNION', '', '', NULL, '', '0000-00-00', '', NULL, '$2y$12$yehOnathoL511zG4zhRdIuOe9aPK3LjsScAehp27UwVNXrRdZK.XS', NULL, '2024-06-10 01:33:04', '2024-06-10 01:33:04'),
-(3, 'John Doe', 'testbuyer@gmail.com', 'BUYER', '3', '60', NULL, '1455', '2001-08-18', '09393922025', NULL, '$2y$12$5iO4R9zKcph16rLmMO8ETevBtC6pAtx8yUIvbuNpXaTVPBoVO4hgK', NULL, '2024-06-12 18:16:02', '2024-06-30 17:01:05'),
-(4, 'APCO ILOCOS SUR', 'ilocossurapco@gmail.com', 'APCOILOCOSSUR', '', '', NULL, '', '0000-00-00', '', NULL, '$2y$12$ihMZsON/dBAHgS1ZypmaKOz5Cyctys8kmvbr4afkpdkBXIAHH0r2e', NULL, '2024-06-12 18:17:16', '2024-06-12 18:17:16'),
-(5, 'APCO ILOCOS NORTE', 'ilocosnorteapco@gmail.com', 'APCOILOCOSNORTE', '', '', NULL, '', '0000-00-00', '', NULL, '$2y$12$jQzcab0ckQ0/BQiLiQBh5.F16/wE3rV8YuFLUoZZ.6WeVv7W.TcfO', NULL, '2024-06-12 18:18:31', '2024-06-12 18:18:31'),
-(6, 'APCO PANGASINAN', 'pangasinanapco@gmail.com', 'APCOPANGASINAN', '', '', NULL, '', '0000-00-00', '', NULL, '$2y$12$KWTeUEDTKpbn2AR3EAeVSOMx4wIVp8VfNpm4nNaTF9wd75WYTYAoa', NULL, '2024-06-12 18:19:22', '2024-06-12 18:19:22'),
-(7, 'ADMINISTRATOR', 'fieldsdarfo1@gmail.com', 'ADMIN', '', '', NULL, '', '0000-00-00', '', NULL, '$2y$12$nDHGDlwqmzIP2/iFuvFTsecCPcz2rxwuT1VsoxlLyR6vL06k.cnm2', NULL, '2024-06-13 17:01:25', '2024-06-13 17:01:25'),
-(8, 'Christian', 'cjave08@gmail.com', 'FCA', '3', '60', '60', '1455', '2001-08-18', '09393922025', NULL, '$2y$12$5n5z9WpIW7IMO9HPtoId8eNhzAYH4M9WGou0ialQ8x9aW0DBhZX52', NULL, '2024-06-21 23:08:15', '2024-06-21 23:08:15');
+INSERT INTO `users` (`id`, `name`, `email`, `userType`, `province`, `municipality`, `district`, `barangay`, `birthDate`, `phoneNumber`, `authorizedUser`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Christian Jave Tejano', 'christiantejano18@gmail.com', 'FCA', '3', '60', NULL, '1455', '2001-08-18', '09393922025', 'Yes', NULL, '$2y$12$UHJPmqSmRQzMfoQ/YmuNVuR5zwHrRAKnfKaeIIqqovZUBAr.N8o5y', NULL, '2024-06-06 07:51:24', '2024-06-06 07:51:24'),
+(2, 'APCO LA UNION', 'launionapco@gmail.com', 'APCOLAUNION', '', '', NULL, '', '0000-00-00', '', 'Yes', NULL, '$2y$12$yehOnathoL511zG4zhRdIuOe9aPK3LjsScAehp27UwVNXrRdZK.XS', NULL, '2024-06-10 01:33:04', '2024-06-10 01:33:04'),
+(3, 'John Doe', 'testbuyer@gmail.com', 'BUYER', '3', '60', NULL, '1455', '2001-08-18', '09393922025', 'Yes', NULL, '$2y$12$5iO4R9zKcph16rLmMO8ETevBtC6pAtx8yUIvbuNpXaTVPBoVO4hgK', NULL, '2024-06-12 18:16:02', '2024-08-13 17:54:57'),
+(4, 'APCO ILOCOS SUR', 'ilocossurapco@gmail.com', 'APCOILOCOSSUR', '', '', NULL, '', '0000-00-00', '', 'Yes', NULL, '$2y$12$ihMZsON/dBAHgS1ZypmaKOz5Cyctys8kmvbr4afkpdkBXIAHH0r2e', NULL, '2024-06-12 18:17:16', '2024-06-12 18:17:16'),
+(5, 'APCO ILOCOS NORTE', 'ilocosnorteapco@gmail.com', 'APCOILOCOSNORTE', '', '', NULL, '', '0000-00-00', '', 'Yes', NULL, '$2y$12$jQzcab0ckQ0/BQiLiQBh5.F16/wE3rV8YuFLUoZZ.6WeVv7W.TcfO', NULL, '2024-06-12 18:18:31', '2024-06-12 18:18:31'),
+(6, 'APCO PANGASINAN', 'pangasinanapco@gmail.com', 'APCOPANGASINAN', '', '', NULL, '', '0000-00-00', '', 'Yes', NULL, '$2y$12$KWTeUEDTKpbn2AR3EAeVSOMx4wIVp8VfNpm4nNaTF9wd75WYTYAoa', NULL, '2024-06-12 18:19:22', '2024-06-12 18:19:22'),
+(7, 'ADMINISTRATOR', 'fieldsdarfo1@gmail.com', 'ADMIN', '', '', NULL, '', '0000-00-00', '', 'Yes', NULL, '$2y$12$nDHGDlwqmzIP2/iFuvFTsecCPcz2rxwuT1VsoxlLyR6vL06k.cnm2', NULL, '2024-06-13 17:01:25', '2024-08-13 17:51:43'),
+(8, 'Christian', 'cjave08@gmail.com', 'FCA', '3', '60', '60', '1455', '2001-08-18', '09393922025', 'Yes', NULL, '$2y$12$5n5z9WpIW7IMO9HPtoId8eNhzAYH4M9WGou0ialQ8x9aW0DBhZX52', NULL, '2024-06-21 23:08:15', '2024-08-13 18:00:08');
 
 -- --------------------------------------------------------
 
@@ -4667,6 +4770,18 @@ ALTER TABLE `fund_sources`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
+-- Indexes for table `livestocks`
+--
+ALTER TABLE `livestocks`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `livestock_types`
+--
+ALTER TABLE `livestock_types`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `machineries`
 --
 ALTER TABLE `machineries`
@@ -4689,6 +4804,12 @@ ALTER TABLE `member_profiles`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`) USING BTREE;
+
+--
+-- Indexes for table `mlgu_accreditations`
+--
+ALTER TABLE `mlgu_accreditations`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `municipalities`
@@ -4715,6 +4836,12 @@ ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`) USING BTREE,
   ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`) USING BTREE,
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`) USING BTREE;
+
+--
+-- Indexes for table `plgu_accreditations`
+--
+ALTER TABLE `plgu_accreditations`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `president_profiles`
@@ -4920,6 +5047,18 @@ ALTER TABLE `fund_sources`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `livestocks`
+--
+ALTER TABLE `livestocks`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `livestock_types`
+--
+ALTER TABLE `livestock_types`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `machineries`
 --
 ALTER TABLE `machineries`
@@ -4941,7 +5080,13 @@ ALTER TABLE `member_profiles`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+
+--
+-- AUTO_INCREMENT for table `mlgu_accreditations`
+--
+ALTER TABLE `mlgu_accreditations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `municipalities`
@@ -4959,6 +5104,12 @@ ALTER TABLE `nature_of_requests`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `plgu_accreditations`
+--
+ALTER TABLE `plgu_accreditations`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -5013,7 +5164,7 @@ ALTER TABLE `tool_types`
 -- AUTO_INCREMENT for table `training_needs`
 --
 ALTER TABLE `training_needs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `training_types`
@@ -5025,7 +5176,7 @@ ALTER TABLE `training_types`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `water_source_profiles`

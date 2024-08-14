@@ -314,16 +314,8 @@
                                     <th class="text-center">Name of Association</th>
                                     <th class="text-center">Province</th>
                                     <th class="text-center">Accreditation Status</th>
-                                    <th class="text-center">Amended Omnibus Sworn Statement
-                                    </th>
-                                    <th class="text-center">Checklist of CSO Requirements</th>
-                                    <th class="text-center">CSO Application Form</th>
-                                    <th class="text-center">Secretary Certificate of Incumbent Officers</th>
-                                    <th class="text-center">Sworn Affidavit of the CSO Secretary</th>
-                                    <th class="text-center">Endorsement Letter</th>
-                                    <th class="text-center">Farmer Profile</th>
-                                    <th class="text-center">Letter of Intent</th>
-                                    <th class="text-center">Omnibus Sworn Certificate with Notary</th>
+                                    <th class="text-center">Date of Registration</th>
+                                    <th class="text-center">Expiration Date</th>
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider">
@@ -333,49 +325,10 @@
                                         <td class="text-center">{{ $accreditation->province_name }}</td>
                                         <td class="text-center">{{ $accreditation->accreditation_status }}</td>
                                         <td class="text-center">
-                                            {!! $accreditation->amendedOmnibusSwornStatement
-                                                ? '<a href="' . asset($accreditation->amendedOmnibusSwornStatement) . '" target="_blank">View File</a>'
-                                                : 'No file available' !!}
+                                            {{ \Carbon\Carbon::parse($accreditation->registrationDate)->format('F j, Y') }}
                                         </td>
                                         <td class="text-center">
-                                            {!! $accreditation->checklistCsoRequirement
-                                                ? '<a href="' . asset($accreditation->checklistCsoRequirement) . '" target="_blank">View File</a>'
-                                                : 'No file available' !!}
-                                        </td>
-                                        <td class="text-center">
-                                            {!! $accreditation->csoApplicationForm
-                                                ? '<a href="' . asset($accreditation->csoApplicationForm) . '" target="_blank">View File</a>'
-                                                : 'No file available' !!}
-                                        </td>
-                                        <td class="text-center">
-                                            {!! $accreditation->secretaryCertificate
-                                                ? '<a href="' . asset($accreditation->secretaryCertificate) . '" target="_blank">View File</a>'
-                                                : 'No file available' !!}
-                                        </td>
-                                        <td class="text-center">
-                                            {!! $accreditation->swornAffidavit
-                                                ? '<a href="' . asset($accreditation->swornAffidavit) . '" target="_blank">View File</a>'
-                                                : 'No file available' !!}
-                                        </td>
-                                        <td class="text-center">
-                                            {!! $accreditation->endorsementLetter
-                                                ? '<a href="' . asset($accreditation->endorsementLetter) . '" target="_blank">View File</a>'
-                                                : 'No file available' !!}
-                                        </td>
-                                        <td class="text-center">
-                                            {!! $accreditation->farmerProfile
-                                                ? '<a href="' . asset($accreditation->farmerProfile) . '" target="_blank">View File</a>'
-                                                : 'No file available' !!}
-                                        </td>
-                                        <td class="text-center">
-                                            {!! $accreditation->letterOfIntent
-                                                ? '<a href="' . asset($accreditation->letterOfIntent) . '" target="_blank">View File</a>'
-                                                : 'No file available' !!}
-                                        </td>
-                                        <td class="text-center">
-                                            {!! $accreditation->omnibusSwornCertificateNotary
-                                                ? '<a href="' . asset($accreditation->omnibusSwornCertificateNotary) . '" target="_blank">View File</a>'
-                                                : 'No file available' !!}
+                                            {{ \Carbon\Carbon::parse($accreditation->expirationDate)->format('F j, Y') }}
                                         </td>
                                     </tr>
                                 @endforeach

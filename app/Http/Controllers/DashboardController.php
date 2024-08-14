@@ -150,7 +150,9 @@ class DashboardController extends Controller
 
         $accreditations = CSOAccreditation::leftJoin('rcef_accreditations', 'cso_accreditations.userId', '=', 'rcef_accreditations.userId')
             ->leftJoin('provinces', 'cso_accreditations.province', '=', 'provinces.id')
+            ->leftJoin('association_profiles', 'cso_accreditations.userId', '=', 'association_profiles.userId')
             ->select(
+                'association_profiles.*',
                 'cso_accreditations.*',
                 'rcef_accreditations.endorsementLetter',
                 'rcef_accreditations.farmerProfile',

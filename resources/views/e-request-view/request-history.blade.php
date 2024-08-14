@@ -25,10 +25,10 @@
                                 class="btn btn-success show-request-details" href="">View</a>
                         </td>
                     </tr>
-                @endforeach
+
             </tbody>
         </table>
-    @endif
+
 </div>
 
 <div class="modal fade" id="historyModal" tabindex="-1" aria-labelledby="historyModalLabel" aria-hidden="true">
@@ -82,3 +82,5 @@
         </div>
     </div>
 </div>
+@endforeach
+@endif

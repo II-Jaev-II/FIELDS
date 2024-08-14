@@ -9,6 +9,9 @@ use App\Http\Controllers\ELinkageController;
 use App\Http\Controllers\ERequestController;
 use App\Http\Controllers\FCAProfileController;
 use App\Http\Controllers\InterventionsController;
+use App\Http\Controllers\MLGUAccreditationController;
+use App\Http\Controllers\PendingUserController;
+use App\Http\Controllers\PLGUAccreditationController;
 use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RCEFAccreditationController;
@@ -98,6 +101,22 @@ Route::middleware('auth')->group(function () {
     Route::post('/rcef-accreditation-update', [RCEFAccreditationController::class, 'update'])->name('rcef-accreditation.update');
 });
 
+//Group for MLGU Accreditations routes
+Route::middleware('auth')->group(function () {
+    Route::get('/mlgu-accreditation', [MLGUAccreditationController::class, 'index'])->name('mlgu-accreditation');
+    Route::post('/mlgu-accreditation-create', [MLGUAccreditationController::class, 'store'])->name('mlgu-accreditation.create');
+    Route::get('/mlgu-accreditation-edit', [MLGUAccreditationController::class, 'edit'])->name('mlgu-accreditation.edit');
+    Route::post('/mlgu-accreditation-update', [MLGUAccreditationController::class, 'update'])->name('mlgu-accreditation.update');
+});
+
+//Group for PLGU Accreditations routes
+Route::middleware('auth')->group(function () {
+    Route::get('/plgu-accreditation', [PLGUAccreditationController::class, 'index'])->name('plgu-accreditation');
+    Route::post('/plgu-accreditation-create', [PLGUAccreditationController::class, 'store'])->name('plgu-accreditation.create');
+    Route::get('/plgu-accreditation-edit', [PLGUAccreditationController::class, 'edit'])->name('plgu-accreditation.edit');
+    Route::post('/plgu-accreditation-update', [PLGUAccreditationController::class, 'update'])->name('plgu-accreditation.update');
+});
+
 //Group for E-Linkage routes
 Route::middleware('auth')->group(function () {
     Route::get('/e-linkage', [ELinkageController::class, 'view'])->name('e-linkage');
@@ -136,6 +155,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin-rtdmf-create', [AdminController::class, 'create'])->name('rtdmf.create');
     Route::post('/admin-rtdmf-store', [AdminController::class, 'store'])->name('rtdmf.store');
     Route::get('/admin-user-management', [AdminController::class, 'list'])->name('users.list');
+    Route::get('/admin-user-management/pending-users/view', [PendingUserController::class, 'view'])->name('pendingUsers.view');
+    Route::get('/admin-user-management/pending-users/update/{id}', [PendingUserController::class, 'update'])->name('pendingUsers.update');
+    Route::get('/admin-user-management/pending-users/destroy/{id}', [PendingUserController::class, 'destroy'])->name('pendingUsers.destroy');
     Route::get('/admin-user-management/fca/{id}', [AdminController::class, 'fcaView'])->name('fcaProfile.view');
     Route::get('/admin-user-management/rsbsa-details/{id}', [AdminController::class, 'rsbsaView'])->name('rsbsaDetails.view');
     Route::get('/admin-user-management/e-request/{id}', [AdminController::class, 'eRequestView'])->name('eRequest.view');

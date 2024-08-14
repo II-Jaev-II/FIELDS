@@ -37,6 +37,9 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('cso-accreditation') }}">CSO Accreditations</a></li>
                         <li><a class="dropdown-item" href="{{ route('rcef-accreditation') }}">RCEF Accreditations</a>
+                        <li><a class="dropdown-item" href="{{ route('mlgu-accreditation') }}">MLGU Accreditations</a>
+                        </li>
+                        <li><a class="dropdown-item" href="{{ route('plgu-accreditation') }}">PLGU Accreditations</a>
                         </li>
                     </ul>
                 </li>

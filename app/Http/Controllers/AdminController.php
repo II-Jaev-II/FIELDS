@@ -10,8 +10,11 @@ use App\Models\CSOAccreditation;
 use App\Models\ELinkage;
 use App\Models\ERequest;
 use App\Models\Facilities;
+use App\Models\Livestocks;
 use App\Models\Machineries;
 use App\Models\MemberProfile;
+use App\Models\MLGUAccreditation;
+use App\Models\PLGUAccreditation;
 use App\Models\PresidentProfile;
 use App\Models\Province;
 use App\Models\RCEFAccreditation;
@@ -33,7 +36,9 @@ class AdminController extends Controller
         $user = $request->user();
 
         $userTypes = ['FCA', 'BUYER', 'MLGU', 'PLGU'];
-        $users = User::whereIn('userType', $userTypes)->get();
+        $users = User::whereIn('userType', $userTypes)
+            ->where('authorizedUser', 'yes') // Add this condition
+            ->get();
 
         return view('admin/user-management/user-management', [
             'user' => $user,
@@ -131,10 +136,16 @@ class AdminController extends Controller
 
         $rcefAccreditation = RCEFAccreditation::where('userId', $id)->first();
 
+        $mlguAccreditation = MLGUAccreditation::where('userId', $id)->first();
+
+        $plguAccreditation = PLGUAccreditation::where('userId', $id)->first();
+
         return view('admin/user-management/accreditations/accreditations', [
             'id' => $id,
             'csoAccreditation' => $csoAccreditation,
             'rcefAccreditation' => $rcefAccreditation,
+            'mlguAccreditation' => $mlguAccreditation,
+            'plguAccreditation' => $plguAccreditation,
         ]);
     }
 
@@ -168,10 +179,18 @@ class AdminController extends Controller
             ->where('userId', $id)
             ->get();
 
+        $livestocks = Livestocks::join('livestock_types', 'livestocks.intervention', '=', 'livestock_types.id')
+            ->join('funding_agencies', 'livestocks.fundingAgency', '=', 'funding_agencies.id')
+            ->join('fund_sources', 'livestocks.fundSource', '=', 'fund_sources.id')
+            ->select('livestocks.*', 'livestock_types.livestock as livestock_name', 'funding_agencies.agency as fundingAgency', 'fund_sources.source as fundSource')
+            ->where('userId', $id)
+            ->get();
+
         return view('admin/user-management/interventions/interventions', [
             'id' => $id,
             'interventions' => $interventions,
             'facilities' => $facilities,
+            'livestocks' => $livestocks,
         ]);
     }
 

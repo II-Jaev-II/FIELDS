@@ -107,6 +107,50 @@
                 </tbody>
             </table>
         @endif
+        @if ($livestocks)
+            <h2 class="bg-success text-white p-2 text-center mt-2">Livestock</h2>
+            <table id="livestockTable"
+                class="table table-success table-striped table-hover table-bordered border-success" style="width:100%">
+                <thead>
+                    <tr>
+                        <th class="text-center">Intervention</th>
+                        <th class="text-center">Specification</th>
+                        <th class="text-center">Amount</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Funding Agency</th>
+                        <th class="text-center">Funding Source</th>
+                        <th class="text-center">MOA/DOD</th>
+                        <th class="text-center">Certificate of Acceptance</th>
+                        <th class="text-center">Geo-tagged Picture</th>
+                        <th class="text-center">CMS</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    @foreach ($livestocks as $livestock)
+                        <tr>
+                            <td class="text-center">{{ $livestock->livestock_name }}</td>
+                            <td class="text-center">{{ $livestock->specification }}</td>
+                            <td class="text-center">{{ $livestock->amount }}</td>
+                            <td class="text-center">{{ $livestock->status }}</td>
+                            <td class="text-center">{{ $livestock->fundingAgency }}</td>
+                            <td class="text-center">{{ $livestock->fundSource }}</td>
+                            <td class="text-center">{!! $livestock->moa
+                                ? '<a href="' . asset($livestock->moa) . '" target="_blank">View File</a>'
+                                : 'No file available' !!}</td>
+                            <td class="text-center">{!! $livestock->certificateOfAcceptance
+                                ? '<a href="' . asset($livestock->certificateOfAcceptance) . '" target="_blank">View File</a>'
+                                : 'No file available' !!}</td>
+                            <td class="text-center">{!! $livestock->geoTaggedPicture
+                                ? '<a href="' . asset($livestock->geoTaggedPicture) . '" target="_blank">View File</a>'
+                                : 'No file available' !!}</td>
+                            <td class="text-center">{!! $livestock->cms
+                                ? '<a href="' . asset($livestock->cms) . '" target="_blank">View File</a>'
+                                : 'No file available' !!}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @endif
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
@@ -116,6 +160,9 @@
             responsive: true
         });
         $('#facilitiesTable').DataTable({
+            responsive: true
+        });
+        $('#livestockTable').DataTable({
             responsive: true
         });
     </script>

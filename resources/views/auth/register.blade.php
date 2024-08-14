@@ -1,5 +1,10 @@
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}" class="needs-validation" novalidate>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         @csrf
 
         <!-- Name -->
