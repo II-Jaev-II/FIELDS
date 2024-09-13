@@ -16,11 +16,14 @@ class CSOAccreditationController extends Controller
 
         $csoAccreditation = CSOAccreditation::where('userId', $user->id)->first();
 
+        $associationProfiles = AssociationProfile::where('userId', $user->id)->first();
+
         $profile = AssociationProfile::where('userId', $user->id)->first();
 
         return view('accreditations/cso-accreditation/cso-accreditation', [
             'user' => $user,
             'csoAccreditation' => $csoAccreditation,
+            'associationProfiles' => $associationProfiles,
             'profile' => $profile,
         ]);
     }

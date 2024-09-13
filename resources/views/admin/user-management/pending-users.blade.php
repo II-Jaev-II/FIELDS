@@ -37,9 +37,9 @@
                             <td class="text-center">{{ $pendingUser->name }}</td>
                             <td class="text-center">{{ $pendingUser->email }}</td>
                             <td class="text-center">{{ $pendingUser->userType }}</td>
-                            <td class="text-center">{{ $pendingUser->province }}</td>
-                            <td class="text-center">{{ $pendingUser->municipality }}</td>
-                            <td class="text-center">{{ $pendingUser->barangay }}</td>
+                            <td class="text-center">{{ $pendingUser->province_name }}</td>
+                            <td class="text-center">{{ $pendingUser->municipality_name }}</td>
+                            <td class="text-center">{{ $pendingUser->barangay_name }}</td>
                             <td class="text-center">{{ $pendingUser->phoneNumber }}</td>
                             <td class="text-center">
                                 <a href="{{ route('pendingUsers.update', ['id' => $pendingUser->id]) }}"

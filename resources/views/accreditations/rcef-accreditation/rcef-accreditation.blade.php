@@ -21,10 +21,15 @@
                 </div>
             @endif
 
-            @include('accreditations.rcef-accreditation.input-documents')
-
-            @if ($rcefAccreditation)
+            @if ($profile)
+                @include('accreditations.rcef-accreditation.input-documents')
             @else
+                <div class="d-flex justify-content-center align-items-center">
+                    <p>Please submit your <a href="{{ route('fca.view') }}">FCA Profile.</a></p>
+                </div>
+            @endif
+
+            @if (!$rcefAccreditation && $profile)
                 <hr>
                 <input type="submit" value="Submit"
                     class="btn btn-success text-white col-md-4 rounded-pill mb-2 mx-auto d-block">

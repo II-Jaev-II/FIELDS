@@ -21,14 +21,20 @@
                 </div>
             @endif
 
-            @include('accreditations.mlgu-accreditation.input-documents')
-
-            @if ($mlguAccreditation)
+            @if ($profile)
+                @include('accreditations.mlgu-accreditation.input-documents')
             @else
+                <div class="d-flex justify-content-center align-items-center">
+                    <p>Please submit your <a href="{{ route('fca.view') }}">FCA Profile.</a></p>
+                </div>
+            @endif
+
+            @if (!$mlguAccreditation && $profile)
                 <hr>
                 <input type="submit" value="Submit"
                     class="btn btn-success text-white col-md-4 rounded-pill mb-2 mx-auto d-block">
             @endif
+
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

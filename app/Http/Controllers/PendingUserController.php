@@ -11,7 +11,12 @@ class PendingUserController extends Controller
     {
         $user = $request->user();
 
-        $pendingUsers = User::where('authorizedUser', 'No')->get();
+        $pendingUsers = User::join('provinces', 'users.province', '=', 'provinces.id')
+            ->join('municipalities', 'users.municipality', '=', 'municipalities.id')
+            ->join('barangays', 'users.barangay', '=', 'barangays.id')
+            ->where('authorizedUser', 'No')
+            ->select('users.*', 'provinces.province_name', 'municipalities.municipality_name', 'barangays.barangay_name')
+            ->get();
 
         return view('admin/user-management/pending-users', [
             'user' => $user,

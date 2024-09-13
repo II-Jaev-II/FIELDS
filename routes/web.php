@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\APCOController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\BuyerLinkageController;
 use App\Http\Controllers\CSOAccreditationController;
 use App\Http\Controllers\DashboardController;
@@ -173,8 +174,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/rsbsa-details', [RsbsaController::class, 'index'])->name('rsbsa.index');
     Route::post('/rsbsa-details', [RsbsaController::class, 'store'])->name('rsbsa.store');
 });
-
-Route::get('/dropdown-options', 'DropdownController@getOptions');
 
 
 require __DIR__ . '/auth.php';
