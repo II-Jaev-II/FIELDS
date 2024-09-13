@@ -1,0 +1,34 @@
+body {
+    background-color: rgba(105, 138, 97, 0.6);
+}
+
+.custom-forgot:hover {
+    color: blue;
+}
+
+.custom-button {
+    border: 1px black solid;
+    height: 40px;
+    transition: background-color 0.5s;
+}
+
+.custom-button:hover {
+    background-color: #698a61;
+}
+
+.login-form-container {
+    border: 1px solid #ccc;
+    /* Adjust border color and style as needed */
+    padding: 20px;
+    /* Adjust padding as needed */
+    border-radius: 10px;
+    /* Optional: Add border radius for rounded corners */
+    max-width: 400px;
+    /* Optional: Set a maximum width for the form container */
+    width: 100%;
+}
+
+.application-logo {
+    width: 50%;
+    margin: auto;
+}

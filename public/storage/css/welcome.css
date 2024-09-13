@@ -1,0 +1,256 @@
+/* CSS For Header & Navbar */
+
+body {
+    background-color: #f5f3ed;
+}
+
+.header {
+    background-image: url('../images/backdrop.png');
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid green 5px;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 767px) {
+
+    .header {
+        background-image: none;
+    }
+
+    .navbar-brand {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.nav-link,
+.navbar-brand {
+    color: white;
+    font-size: 16px;
+    font-family: Poppins;
+}
+
+.navbar-title {
+    font-size: 30px;
+    color: white;
+    font-family: Poppins;
+}
+
+@media screen and (min-width: 769px) {
+    .dropend:hover>.dropdown-menu {
+        position: absolute;
+        margin-top: -40px;
+        left: 100%;
+    }
+
+    .dropend .dropdown-toggle {
+        margin-left: 0.15em;
+    }
+}
+
+/* Navbar Section */
+.navbar {
+    background-color: #698a61;
+    padding: 1px;
+}
+
+.links-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.label-style {
+    margin-top: 2px;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 5px;
+    text-decoration: none;
+    color: #ffffff;
+    border-radius: 5px;
+    border: solid 2px #ffffff;
+    transition: background-color 0.3s;
+}
+
+.label-style:hover {
+    background-color: #d4eccf;
+}
+
+@media screen and (max-width: 767px) {
+    .navbar {
+        padding: 5px;
+    }
+
+    .navbar a {
+        font-size: 1rem;
+    }
+
+    .navbar .label-style {
+        padding: 5px;
+        text-decoration: none;
+        color: #ffffff;
+        border-radius: 5px;
+        border: solid 2px #ffffff;
+        transition: background-color 0.3s;
+    }
+}
+
+/* Hero Section */
+.hero .container {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.hero h1 {
+    font-family: Poppins;
+    color: #698a61;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.dashboardLogo {
+    width: 80%;
+    height: auto;
+}
+
+.custom-hr {
+    height: 3px;
+    width: 100%;
+    background-color: #698a61;
+}
+
+@media screen and (max-width: 767px) {
+    section.hero {
+        text-align: center;
+    }
+
+    section.hero h1 {
+        font-size: 1rem;
+    }
+
+    section.hero img {
+        width: 40%;
+        margin-bottom: 5%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    section.hero {
+        text-align: center;
+    }
+
+    section.hero h1 {
+        font-size: 3rem;
+    }
+
+    section.hero img {
+        width: 20%;
+    }
+}
+
+/* Buttons */
+.buttons .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.modal-btn {
+    font-size: 1rem;
+    font-family: Poppins;
+    color: white;
+    background-color: #698a61;
+    height: 60px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.5s;
+}
+
+.modal-btn:hover {
+    background-color: #d4eccf;
+    color: black;
+}
+
+@media screen and (max-width: 767px) {
+    .buttons .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 3%;
+    }
+}
+
+/* FCA Chart */
+.fcaChartBox {
+    width: 50%;
+    border: solid 1px #698a61;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 767px) {
+    .fcaChartBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+/* E Request Chart */
+.requestChartBox {
+    width: 50%;
+    border: solid 1px #698a61;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 767px) {
+    .requestChartBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+.requestChart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 767px) {
+    .requestChart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+}

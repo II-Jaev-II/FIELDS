@@ -1,0 +1,141 @@
+/* CSS For Header & Navbar */
+.header {
+    background-image: url('../images/backdrop.png');
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* Change to column */
+    justify-content: center;
+    /* Vertically center the content */
+    align-items: center;
+    /* Horizontally center the content */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    /* Keep this for the logo and text alignment */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .header {
+        background-position: center;
+        /* Adjust background position for smaller screens */
+        text-align: center;
+        /* Center text content */
+    }
+
+    .navbar-brand {
+        flex-direction: column;
+        /* Stack logo and text vertically on smaller screens */
+        text-align: center;
+        /* Center text content */
+    }
+}
+
+.nav-link,
+.navbar-brand {
+    color: white;
+    font-size: 16px;
+    font-family: Poppins;
+}
+
+.dropend .dropdown-toggle {
+    margin-left: 1em;
+}
+
+.dropdown .dropdown-menu {
+    display: none;
+}
+
+.dropdown-item:hover {
+    background-color: #698a61;
+    color: white;
+}
+
+.dropdown:hover>.dropdown-menu,
+.dropend:hover>.dropdown-menu {
+    display: block;
+    margin-top: 0;
+    margin-left: 0.125em;
+}
+
+@media screen and (min-width: 769px) {
+    .dropend:hover>.dropdown-menu {
+        position: absolute;
+        margin-top: -40px;
+        left: 100%;
+    }
+
+    .dropend .dropdown-toggle {
+        margin-left: 0.15em;
+    }
+}
+
+/* CSS For Buttons */
+
+.custom-forgot:hover {
+    color: blue;
+}
+
+.custom-button {
+    border: 1px black solid;
+    height: 40px;
+    transition: background-color 0.5s;
+}
+
+.custom-button:hover {
+    background-color: #698a61;
+}
+
+/* CSS For E Request */
+.container {
+    font-family: Poppins;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+    padding: 15px;
+}
+
+.form-control,
+.form-select,
+.form-check-input {
+    border: gray solid .1em;
+}
+
+/* CSS for Labels in FCA Profile */
+.label-style {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.edit-link {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    padding: 5px;
+    position: relative;
+}
+
+.edit-link::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    background-color: #698a61;
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .3s ease-in-out;
+}
+
+.edit-link:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+}

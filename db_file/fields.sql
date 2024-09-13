@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 29, 2024 at 01:57 AM
+-- Generation Time: Sep 13, 2024 at 04:22 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -97,13 +97,6 @@ CREATE TABLE `association_profiles` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
---
--- Dumping data for table `association_profiles`
---
-
-INSERT INTO `association_profiles` (`id`, `association`, `province`, `municipality`, `district`, `barangay`, `houseNumber`, `street`, `zipCode`, `office`, `email`, `registrationNumber`, `registrationDate`, `expirationDate`, `registrationCertificate`, `goodStandingCertificate`, `approvedByLaws`, `latestAuditedFinancialStatement`, `userId`, `cocStatus`, `created_at`, `updated_at`) VALUES
-(1, 'Test Association', '3', '60', '60', '1455', NULL, NULL, 2503, 'DOLE', 'christiantejano18@gmail.com', '12345', '2024-08-28', '2024-09-07', 'uploads/CertificateOfRegistration/1724839424.pdf', 'uploads/certificateGoodStanding/1724839424.pdf', 'uploads/lawsFile/1724839424.pdf', 'uploads/latestFinancialStatement/1724839424.pdf', 1, '', '2024-08-28 02:03:44', '2024-08-28 02:03:44');
-
 -- --------------------------------------------------------
 
 --
@@ -119,14 +112,6 @@ CREATE TABLE `attended_trainings` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `attended_trainings`
---
-
-INSERT INTO `attended_trainings` (`id`, `trainingsAttended`, `trainingConductor`, `yearAttended`, `userId`, `created_at`, `updated_at`) VALUES
-(1, '2', 'Christian Jave', 2023, 1, '2024-08-28 02:03:44', '2024-08-28 02:03:44'),
-(2, '9', 'Christian Jave', 2024, 1, '2024-08-28 02:03:44', '2024-08-28 02:03:44');
 
 -- --------------------------------------------------------
 
@@ -3474,13 +3459,6 @@ CREATE TABLE `cso_accreditations` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
---
--- Dumping data for table `cso_accreditations`
---
-
-INSERT INTO `cso_accreditations` (`id`, `association`, `province`, `amendedOmnibusSwornStatement`, `checklistCsoRequirement`, `csoApplicationForm`, `secretaryCertificate`, `swornAffidavit`, `userId`, `created_at`, `updated_at`) VALUES
-(1, 'Test Association', '3', 'uploads/amendedOmnibusSwornStatement/1724839833.pdf', 'uploads/checklistOfCSORequirements/1724839833.pdf', 'uploads/csoApplicationForm/1724839833.pdf', 'uploads/secretaryCertificateOfIncumbentOfficers/1724839833.pdf', 'uploads/swornAffidavitOfCSOSecretary/1724839833.pdf', 1, '2024-08-28 02:10:33', '2024-08-28 02:10:33');
-
 -- --------------------------------------------------------
 
 --
@@ -3697,14 +3675,6 @@ CREATE TABLE `e_linkages` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
---
--- Dumping data for table `e_linkages`
---
-
-INSERT INTO `e_linkages` (`id`, `association`, `commodity`, `subCommodity`, `variety`, `volume`, `startDate`, `endDate`, `userId`, `created_at`, `updated_at`) VALUES
-(1, 'Test Association', '4', '11', 'Chicken', '100', '2024-08-28', '2024-09-07', 1, '2024-08-28 02:12:50', '2024-08-28 02:12:50'),
-(2, 'Test Association', '4', '10', 'Pig', '200', '2024-08-28', '2024-09-28', 1, '2024-08-28 02:12:50', '2024-08-28 02:12:50');
-
 -- --------------------------------------------------------
 
 --
@@ -3735,14 +3705,6 @@ CREATE TABLE `e_requests` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
---
--- Dumping data for table `e_requests`
---
-
-INSERT INTO `e_requests` (`id`, `referenceNumber`, `province`, `natureOfRequest`, `letterOfIntent`, `boardResolution`, `endorsementLetter1`, `endorsementLetter2`, `certificateOfAvailability`, `machineriesProposal`, `geoTaggedPhotos`, `geoTaggedLocation`, `businessPlan`, `usufruct`, `productionManagementPlan`, `requestStatus`, `updatedRequestDate`, `validationForm`, `userId`, `created_at`, `updated_at`) VALUES
-(1, 'TA-1336', 'La Union', 'Facility', 'uploads/letterOfIntent/1724839820.pdf', 'uploads/boardResolution/1724839820.pdf', 'uploads/endorsementLetter1/1724839820.pdf', 'uploads/endorsementLetter2/1724839820.pdf', 'uploads/certificateOfAvailability/1724839820.pdf', 'uploads/machineriesProposal/1724839820.pdf', 'uploads/geoTaggedPhotos/1724839820.pdf', 'uploads/geoTaggedLocation/1724839820.pdf', 'uploads/businessPlan/1724839820.pdf', NULL, NULL, 'Pending', NULL, NULL, 1, '2024-08-28 02:10:20', '2024-08-28 02:10:20'),
-(2, 'TA-9684', 'La Union', 'Facility', 'uploads/letterOfIntent/1724839820.pdf', 'uploads/boardResolution/1724839820.pdf', 'uploads/endorsementLetter1/1724839820.pdf', 'uploads/endorsementLetter2/1724839820.pdf', 'uploads/certificateOfAvailability/1724839820.pdf', 'uploads/machineriesProposal/1724839820.pdf', 'uploads/geoTaggedPhotos/1724839820.pdf', 'uploads/geoTaggedLocation/1724839820.pdf', 'uploads/businessPlan/1724839820.pdf', NULL, NULL, 'Pending', NULL, NULL, 1, '2024-08-28 02:10:20', '2024-08-28 02:10:20');
-
 -- --------------------------------------------------------
 
 --
@@ -3770,14 +3732,6 @@ CREATE TABLE `e_request_types` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `e_request_types`
---
-
-INSERT INTO `e_request_types` (`id`, `association`, `referenceNumber`, `requestType`, `name`, `address`, `houseNumber`, `street`, `office`, `contactNumber`, `emailAddress`, `birthDate`, `maleCount`, `femaleCount`, `serviceArea`, `userId`, `created_at`, `updated_at`) VALUES
-(1, 'Test Association', 'TA-1336', 'Cold Storage', 'Christian Jave Villanueva Tejano', 'Santa Lucia, Aringay, La Union', NULL, NULL, 'DOLE', '09393922025', 'christiantejano18@gmail.com', '2001-08-18', 10, 10, 200, 1, '2024-08-28 02:10:20', '2024-08-28 02:10:20'),
-(2, 'Test Association', 'TA-9684', 'Monolithic Dome', 'Christian Jave Villanueva Tejano', 'Santa Lucia, Aringay, La Union', NULL, NULL, 'DOLE', '09393922025', 'christiantejano18@gmail.com', '2001-08-18', 10, 10, 200, 1, '2024-08-28 02:10:20', '2024-08-28 02:10:20');
-
 -- --------------------------------------------------------
 
 --
@@ -3801,13 +3755,6 @@ CREATE TABLE `facilities` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `facilities`
---
-
-INSERT INTO `facilities` (`id`, `association`, `intervention`, `specification`, `amount`, `status`, `fundingAgency`, `fundSource`, `moa`, `certificateOfAcceptance`, `geoTaggedPicture`, `cms`, `userId`, `created_at`, `updated_at`) VALUES
-(1, 'Test Association', '4', '1 HP', '300000', 'Functional', '5', '3', 'uploads/facilitiesMoa/1724840071_TEST DOCUMENT.pdf', 'uploads/facilitiesCertificateOfAcceptance/1724840071_TEST DOCUMENT.pdf', 'uploads/facilitiesGeoTaggedPicture/1724840071_TEST DOCUMENT.pdf', 'uploads/facilitiesCms/1724840071_TEST DOCUMENT.pdf', 1, '2024-08-28 02:14:31', '2024-08-28 02:14:31');
 
 -- --------------------------------------------------------
 
@@ -3944,13 +3891,6 @@ CREATE TABLE `livestocks` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `livestocks`
---
-
-INSERT INTO `livestocks` (`id`, `association`, `intervention`, `specification`, `amount`, `status`, `fundingAgency`, `fundSource`, `moa`, `certificateOfAcceptance`, `geoTaggedPicture`, `cms`, `userId`, `created_at`, `updated_at`) VALUES
-(1, 'Test Association', '4', 'Pig', '100000', 'Functional', '3', '7', 'uploads/livestockMoa/1724840071_TEST DOCUMENT.pdf', 'uploads/livestockCertificateOfAcceptance/1724840071_TEST DOCUMENT.pdf', 'uploads/livestockGeoTaggedPicture/1724840071_TEST DOCUMENT.pdf', 'uploads/livestockCms/1724840071_TEST DOCUMENT.pdf', 1, '2024-08-28 02:14:31', '2024-08-28 02:14:31');
-
 -- --------------------------------------------------------
 
 --
@@ -3996,13 +3936,6 @@ CREATE TABLE `machineries` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `machineries`
---
-
-INSERT INTO `machineries` (`id`, `association`, `intervention`, `specification`, `amount`, `status`, `fundingAgency`, `fundSource`, `engineNumber`, `moa`, `certificateOfAcceptance`, `geoTaggedPicture`, `cms`, `userId`, `created_at`, `updated_at`) VALUES
-(1, 'Test Association', '8', '1 HP', '100000', 'Functional', '2', '1', 'uploads/engine_serialNumber/1724840071_TEST DOCUMENT.pdf', 'uploads/machineriesMoa/1724840071_TEST DOCUMENT.pdf', 'uploads/machineriesCertificateOfAcceptance/1724840071_TEST DOCUMENT.pdf', 'uploads/machineriesGeoTaggedPicture/1724840071_TEST DOCUMENT.pdf', 'uploads/machineriesCms/1724840071_TEST DOCUMENT.pdf', 1, '2024-08-28 02:14:31', '2024-08-28 02:14:31');
 
 -- --------------------------------------------------------
 
@@ -4051,13 +3984,6 @@ CREATE TABLE `member_profiles` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `member_profiles`
---
-
-INSERT INTO `member_profiles` (`id`, `maleCount`, `femaleCount`, `totalCount`, `serviceArea`, `farmerProfile`, `userId`, `created_at`, `updated_at`) VALUES
-(1, 10, 10, 20, '200', 'uploads/FarmerProfile/1724839424.pdf', 1, '2024-08-28 02:03:44', '2024-08-28 02:03:44');
 
 -- --------------------------------------------------------
 
@@ -4164,13 +4090,6 @@ CREATE TABLE `mlgu_accreditations` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `mlgu_accreditations`
---
-
-INSERT INTO `mlgu_accreditations` (`id`, `dulyAccomplishedForm`, `boardResolution`, `certificateOfRegistration`, `currentList`, `originalSwornStatement`, `annualAccomplishmentReport`, `financialStatement`, `organizationPurpose`, `copyofMinutes`, `byLaws`, `userId`, `created_at`, `updated_at`) VALUES
-(1, 'uploads/dulyAccomplishedForm/1724839884.pdf', 'uploads/mlguBoardResolution/1724839884.pdf', 'uploads/mlguCertificateOfRegistration/1724839884.pdf', 'uploads/currentList/1724839884.pdf', 'uploads/originalSwornStatement/1724839884.pdf', 'uploads/annualAccomplishmentReport/1724839884.pdf', 'uploads/financialStatement/1724839884.pdf', 'uploads/organizationPurpose/1724839884.pdf', 'uploads/copyofMinutes/1724839884.pdf', 'uploads/byLaws/1724839884.pdf', 1, '2024-08-28 02:11:24', '2024-08-28 02:11:24');
 
 -- --------------------------------------------------------
 
@@ -4401,13 +4320,6 @@ CREATE TABLE `plgu_accreditations` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `plgu_accreditations`
---
-
-INSERT INTO `plgu_accreditations` (`id`, `letterOfApplication`, `dulyAccomplishedForm`, `dulyApprovedBoard`, `certificateOfRegistration`, `currentList`, `annualMeetings`, `annualAccomplishment`, `financialStatement`, `userId`, `created_at`, `updated_at`) VALUES
-(1, 'uploads/letterOfApplication/1724839900.pdf', 'uploads/plguDulyAccomplishedForm/1724839900.pdf', 'uploads/dulyApprovedBoard/1724839900.pdf', 'uploads/plguCertificateOfRegistration/1724839900.pdf', 'uploads/plguCurrentList/1724839900.pdf', 'uploads/annualMeetings/1724839900.pdf', 'uploads/plguAnnualAccomplishment/1724839900.pdf', 'uploads/plguFinancialStatement/1724839900.pdf', 1, '2024-08-28 02:11:40', '2024-08-28 02:11:40');
-
 -- --------------------------------------------------------
 
 --
@@ -4435,13 +4347,6 @@ CREATE TABLE `president_profiles` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `president_profiles`
---
-
-INSERT INTO `president_profiles` (`id`, `firstName`, `middleName`, `lastName`, `suffix`, `province`, `municipality`, `district`, `barangay`, `houseNumber`, `street`, `zipCode`, `position`, `presidentId`, `contactNumber`, `birthDate`, `userId`, `created_at`, `updated_at`) VALUES
-(1, 'Christian Jave', 'Villanueva', 'Tejano', NULL, '3', '60', '60', '1455', NULL, NULL, 2503, 'President', 'uploads/PresidentID/1724839424.pdf', '09393922025', '2001-08-18', 1, '2024-08-28 02:03:44', '2024-08-28 02:03:44');
 
 -- --------------------------------------------------------
 
@@ -4483,13 +4388,6 @@ CREATE TABLE `rcef_accreditations` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
---
--- Dumping data for table `rcef_accreditations`
---
-
-INSERT INTO `rcef_accreditations` (`id`, `association`, `province`, `endorsementLetter`, `farmerProfile`, `letterOfIntent`, `omnibusSwornCertificateNotary`, `userId`, `created_at`, `updated_at`) VALUES
-(1, 'Test Association', '3', 'uploads/rcefEndorsementLetter/1724839865.pdf', 'uploads/rcefFarmerProfile/1724839865.pdf', 'uploads/rcefLetterOfIntent/1724839865.pdf', 'uploads/omnibusSwornCertificateNotary/1724839865.pdf', 1, '2024-08-28 02:11:05', '2024-08-28 02:11:05');
-
 -- --------------------------------------------------------
 
 --
@@ -4528,13 +4426,6 @@ CREATE TABLE `rsbsa_details` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `rsbsa_details`
---
-
-INSERT INTO `rsbsa_details` (`id`, `rsbsaNo`, `firstName`, `middleName`, `lastName`, `extName`, `sex`, `birthDate`, `userId`, `created_at`, `updated_at`) VALUES
-(1, '01-33-12-007-000140', 'RAYMARK', 'BASTO', 'MADRIAGA', '', 'MALE', '1996-10-01', 1, '2024-08-28 02:09:23', '2024-08-28 02:09:23');
-
 -- --------------------------------------------------------
 
 --
@@ -4554,13 +4445,6 @@ CREATE TABLE `rtdmf_lists` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `rtdmf_lists`
---
-
-INSERT INTO `rtdmf_lists` (`id`, `title`, `commodity`, `startDate`, `endDate`, `attachedResult`, `province`, `municipality`, `userId`, `created_at`, `updated_at`) VALUES
-(1, 'Test RTDMF', '2', '2024-08-28', '2024-09-07', 'uploads/rtdmf/1724840576.pdf', '3', '60', 7, '2024-08-28 02:22:57', '2024-08-28 02:22:57');
 
 -- --------------------------------------------------------
 
@@ -4625,13 +4509,6 @@ CREATE TABLE `training_needs` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `training_needs`
---
-
-INSERT INTO `training_needs` (`id`, `trainingNeeds`, `userId`, `created_at`, `updated_at`) VALUES
-(1, '5', 1, '2024-08-28 02:03:44', '2024-08-28 02:03:44');
 
 -- --------------------------------------------------------
 
@@ -4729,13 +4606,6 @@ CREATE TABLE `water_source_profiles` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `water_source_profiles`
---
-
-INSERT INTO `water_source_profiles` (`id`, `SWIPHectares`, `SFRHectares`, `CISTERNHectares`, `STWHectares`, `PISOSHectares`, `PIPHectares`, `RPISHectares`, `SPISHectares`, `WPISHectares`, `DDHectares`, `CDHectares`, `SDHectares`, `rainfallHectares`, `grandHectares`, `userId`, `created_at`, `updated_at`) VALUES
-(1, NULL, NULL, '150', NULL, NULL, '10', NULL, NULL, '20', NULL, '10', '10', NULL, '200', 1, '2024-08-28 02:03:44', '2024-08-28 02:03:44');
 
 -- --------------------------------------------------------
 
@@ -5065,13 +4935,13 @@ ALTER TABLE `animal_types`
 -- AUTO_INCREMENT for table `association_profiles`
 --
 ALTER TABLE `association_profiles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `attended_trainings`
 --
 ALTER TABLE `attended_trainings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `barangays`
@@ -5095,7 +4965,7 @@ ALTER TABLE `commodities`
 -- AUTO_INCREMENT for table `cso_accreditations`
 --
 ALTER TABLE `cso_accreditations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `districts`
@@ -5119,25 +4989,25 @@ ALTER TABLE `equipment_values`
 -- AUTO_INCREMENT for table `e_linkages`
 --
 ALTER TABLE `e_linkages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `e_requests`
 --
 ALTER TABLE `e_requests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `e_request_types`
 --
 ALTER TABLE `e_request_types`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `facilities`
 --
 ALTER TABLE `facilities`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `facility_types`
@@ -5173,7 +5043,7 @@ ALTER TABLE `fund_sources`
 -- AUTO_INCREMENT for table `livestocks`
 --
 ALTER TABLE `livestocks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `livestock_types`
@@ -5185,7 +5055,7 @@ ALTER TABLE `livestock_types`
 -- AUTO_INCREMENT for table `machineries`
 --
 ALTER TABLE `machineries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `machinery_types`
@@ -5197,7 +5067,7 @@ ALTER TABLE `machinery_types`
 -- AUTO_INCREMENT for table `member_profiles`
 --
 ALTER TABLE `member_profiles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -5209,7 +5079,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `mlgu_accreditations`
 --
 ALTER TABLE `mlgu_accreditations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `municipalities`
@@ -5233,13 +5103,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `plgu_accreditations`
 --
 ALTER TABLE `plgu_accreditations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `president_profiles`
 --
 ALTER TABLE `president_profiles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `provinces`
@@ -5251,7 +5121,7 @@ ALTER TABLE `provinces`
 -- AUTO_INCREMENT for table `rcef_accreditations`
 --
 ALTER TABLE `rcef_accreditations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `request_histories`
@@ -5263,13 +5133,13 @@ ALTER TABLE `request_histories`
 -- AUTO_INCREMENT for table `rsbsa_details`
 --
 ALTER TABLE `rsbsa_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `rtdmf_lists`
 --
 ALTER TABLE `rtdmf_lists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sub_commodities`
@@ -5287,7 +5157,7 @@ ALTER TABLE `tool_types`
 -- AUTO_INCREMENT for table `training_needs`
 --
 ALTER TABLE `training_needs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `training_types`
@@ -5305,7 +5175,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `water_source_profiles`
 --
 ALTER TABLE `water_source_profiles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `water_source_types`
